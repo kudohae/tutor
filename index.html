@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
     :root {
@@ -569,6 +568,54 @@
       color: var(--error);
     }
 
+    .consult-kakao {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.4rem;
+      padding: 2.8rem;
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    .consult-kakao-desc {
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.9;
+    }
+
+    .kakao-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 1rem 1.8rem;
+      background: #FEE500;
+      color: #3C1E1E;
+      font-family: "Noto Serif KR", serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, filter 0.2s ease;
+      text-decoration: none;
+    }
+
+    .kakao-btn:hover {
+      transform: translateY(-3px);
+      filter: brightness(0.94);
+    }
+
+    .consult-reply-note {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    .consult-reply-note strong {
+      color: var(--ink);
+    }
+
     .closing {
       padding: 7rem 3rem;
       text-align: center;
@@ -724,7 +771,7 @@
         </div>
 
         <aside class="hero-card reveal" aria-label="수업 핵심 요약">
-          <h2 class="hero-card-title">점수를 올리려면, 먼저 문장이 덜 무서워져야 합니다.</h2>
+          <h2 class="hero-card-title">문장 구조를 잡으면, 낯선 지문도 읽어낼 수 있습니다.</h2>
           <p class="hero-card-copy">
             암기는 짧은 시험 범위 안에서는 효과가 있어 보입니다. 문제는 낯선 지문입니다.
             고등 영어와 수능은 처음 보는 문장을 얼마나 침착하게 해석하느냐를 묻습니다.
@@ -732,6 +779,7 @@
           <div class="credentials">
             <p><span>수업자</span> 구도회</p>
             <p><span>전공</span> 고려대학교 영어영문학과 재학</p>
+            <p><span>경험</span> 중등 영어 지도 2년</p>
             <p><span>초점</span> 중등부 내신 보강 · 고등 영어 대비 기본기</p>
           </div>
         </aside>
@@ -843,44 +891,20 @@
             </div>
           </div>
 
-          <form class="consult-form reveal" id="consultationForm">
-            <div class="form-row">
-              <div class="field">
-                <label for="studentName">학생 성명</label>
-                <input id="studentName" name="student_name" type="text" autocomplete="name" required placeholder="예: 김민준">
-              </div>
-              <div class="field">
-                <label for="studentAge">나이</label>
-                <input id="studentAge" name="age" type="number" min="8" max="20" inputmode="numeric" required placeholder="예: 14">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="field">
-                <label for="studentGender">성별</label>
-                <select id="studentGender" name="gender" required>
-                  <option value="">선택해 주세요</option>
-                  <option value="남학생">남학생</option>
-                  <option value="여학생">여학생</option>
-                  <option value="기타/응답하지 않음">기타/응답하지 않음</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="currentWeakness">현재 부족한 점</label>
-                <input id="currentWeakness" name="current_weakness" type="text" required placeholder="예: 긴 문장 해석, 문법 적용">
-              </div>
-            </div>
-
-            <div class="field full">
-              <label for="desiredDirection">원하는 과외 진행 방향</label>
-              <textarea id="desiredDirection" name="desired_direction" required placeholder="예: 학교 시험 범위를 우선 보강하면서, 고등 영어 독해를 대비하고 싶습니다."></textarea>
-            </div>
-
-            <div class="submit-row">
-              <button class="button" type="submit">상담 신청 제출</button>
-            </div>
-            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-          </form>
+          <div class="consult-kakao reveal">
+            <p class="consult-kakao-desc">
+              아래 버튼을 누르면 카카오톡 오픈채팅으로 연결됩니다.<br>
+              현재 상태와 원하는 방향을 편하게 말씀해 주세요.
+            </p>
+            <a class="kakao-btn" href="https://open.kakao.com/o/sL7H83xi" target="_blank" rel="noopener noreferrer" aria-label="카카오톡 오픈채팅으로 상담 신청">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <ellipse cx="12" cy="11" rx="10" ry="8.5" fill="#3C1E1E" opacity="0.18"/>
+                <path d="M12 2.5C6.201 2.5 1.5 6.258 1.5 10.9c0 2.97 1.88 5.572 4.71 7.073l-1.2 4.373 5.01-3.31c.646.09 1.308.137 1.98.137 5.799 0 10.5-3.758 10.5-8.4C22.5 6.258 17.799 2.5 12 2.5z" fill="currentColor"/>
+              </svg>
+              카카오톡으로 상담 신청하기
+            </a>
+            <p class="consult-reply-note">신청 후 <strong>24시간 이내</strong>에 답장드립니다.</p>
+          </div>
         </div>
       </section>
 
@@ -905,10 +929,6 @@
   </div>
 
   <script>
-    const SUPABASE_URL = "https://laedevpwuodgsrazdmaj.supabase.co";
-    const SUPABASE_ANON_KEY = "sb_publishable_ajDNUQaNaveHvGEm9m9GzQ_bdkQNgbe";
-    const CONSULTATION_TABLE = "consultation_requests";
-
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -921,62 +941,6 @@
     document.querySelectorAll(".reveal").forEach((element, index) => {
       element.style.transitionDelay = `${Math.min(index * 55, 280)}ms`;
       revealObserver.observe(element);
-    });
-
-    const form = document.getElementById("consultationForm");
-    const statusElement = document.getElementById("formStatus");
-    const submitButton = form.querySelector("button[type='submit']");
-
-    const isSupabaseConfigured = !SUPABASE_URL.includes("YOUR_PROJECT_REF") && !SUPABASE_ANON_KEY.includes("YOUR_SUPABASE");
-    const supabaseClient = isSupabaseConfigured
-      ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-      : null;
-
-    function setStatus(message, type = "") {
-      statusElement.textContent = message;
-      statusElement.className = `form-status ${type}`.trim();
-    }
-
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-
-      if (!isSupabaseConfigured) {
-        setStatus("Supabase URL과 공개 키를 먼저 입력해야 저장됩니다.", "error");
-        return;
-      }
-
-      const formData = new FormData(form);
-      const payload = {
-        student_name: String(formData.get("student_name")).trim(),
-        age: Number(formData.get("age")),
-        gender: String(formData.get("gender")).trim(),
-        current_weakness: String(formData.get("current_weakness")).trim(),
-        desired_direction: String(formData.get("desired_direction")).trim()
-      };
-
-      if (Object.values(payload).some((value) => value === "" || Number.isNaN(value))) {
-        setStatus("비어 있는 항목이 있습니다.", "error");
-        return;
-      }
-
-      submitButton.disabled = true;
-      submitButton.textContent = "제출 중";
-      setStatus("상담 신청을 저장하고 있습니다.");
-
-      const { error } = await supabaseClient
-        .from(CONSULTATION_TABLE)
-        .insert(payload);
-
-      submitButton.disabled = false;
-      submitButton.textContent = "상담 신청 제출";
-
-      if (error) {
-        setStatus("저장에 실패했습니다. Supabase 테이블 권한과 컬럼명을 확인해 주세요.", "error");
-        return;
-      }
-
-      form.reset();
-      setStatus("상담 신청이 접수되었습니다.", "success");
     });
   </script>
 </body>
